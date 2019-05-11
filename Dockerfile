@@ -1,5 +1,5 @@
 ARG GOLANG_VER=1.12.4-stretch
-ARG ALPINE_VER=3.9.3
+ARG ALPINE_VER=3.9.4
 
 ## Stage 0: build Go executable from code and templates
 FROM golang:${GOLANG_VER} as builder
@@ -14,8 +14,6 @@ RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - && \
     bower --allow-root install && \
     mkdir -p /go/src/github.com/cig0 && \
     ln -sf /go/src/app /go/src/github.com/cig0/tornote
-
-VOLUME /go/src/app/
 
 RUN make install
 
@@ -35,10 +33,8 @@ RUN apk add --update sqlite && \
     mkdir /lib64 && \
     ln -s /lib/libc.musl-x86_64.so.1 /lib64/ld-linux-x86-64.so.2
 
-VOLUME /go/src/app/
-
 USER limited
 
 EXPOSE 8080
 
-CMD ["tornote", "-addr", ":8080"]
+ENTRYPOINT ["tornote", "-addr", ":8080"]
