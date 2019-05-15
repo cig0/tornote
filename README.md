@@ -50,6 +50,7 @@ AGPLv3 or later
 + **master**: production-ready branch; this is the branch that should be pulled when running this app in production
 + **stage**: a.k.a. release branch
 + **dev**: development branch; all work branches have to be merged here
++ **cig0**: my personal development branch, a.k.a. _bleeding-edge_
 
 #### How to contribute
 
