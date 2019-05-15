@@ -28,7 +28,6 @@ ENV PATH="/go/bin:${PATH}"
 
 RUN apk add --no-cache --update sqlite && \
     sqlite3 db.sqlite3 < db.schema && \
-    apk cache clean && \
     adduser -D limited -s /bin/sh && \
     chown -R limited.limited /go && \
     mkdir /lib64 && \
